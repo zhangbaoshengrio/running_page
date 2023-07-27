@@ -138,7 +138,7 @@ jobs:
           python scripts/tulipsport_sync.py ${{ secrets.TULIPSPORT_TOKEN }} --with-gpx
 
       - name: Make svg GitHub profile
-        if: env.RUN_TYPE != 'pass'
+        if: env.RUN_TYPE != 'keep'
         run: |
           python scripts/gen_svg.py --from-db --title "${{ env.TITLE }}" --type github --athlete "${{ env.ATHLETE }}" --special-distance 10 --special-distance2 20 --special-color yellow --special-color2 red --output assets/github.svg --use-localtime --min-distance 0.5
           python scripts/gen_svg.py --from-db --title "${{ env.TITLE_GRID }}" --type grid --athlete "${{ env.ATHLETE }}" --output assets/grid.svg --special-color yellow --special-color2 red --special-distance 20 --special-distance2 40 --use-localtime --min-distance "${{ env.MIN_GRID_DISTANCE }}"
